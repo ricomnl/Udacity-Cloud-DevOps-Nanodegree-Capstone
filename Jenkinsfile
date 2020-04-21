@@ -13,7 +13,9 @@ pipeline {
         } 
 		stage('Lint Dockerfile...') {
 			  agent {
-			  	image 'hadolint/hadolint:latest-debian'
+			  	docker {
+			  		image 'hadolint/hadolint:latest-debian'
+			  	}
 			  }
               steps {
               	  sh 'echo "Linting..."'

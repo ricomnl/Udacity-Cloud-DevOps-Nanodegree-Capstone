@@ -25,8 +25,10 @@ pipeline {
          stage('Build') {
 			steps {
 				sh 'echo "Building Docker Image..."'
-				docker.withRegistry("${REPO}", "ecr:us-east-1:aws-capstone") {
-				 	docker.image("${udacity-capstone}").push()
+				script {
+					docker.withRegistry("${REPO}", "ecr:us-east-1:aws-capstone") {
+					 	docker.image("${udacity-capstone}").push()
+					}
 				}
 			}
 		}    

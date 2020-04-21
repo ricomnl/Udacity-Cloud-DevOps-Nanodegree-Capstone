@@ -12,16 +12,11 @@ node {
 	 	'''
     } 
     stage ("Linting") {
-	    agent {
-	        docker {
-	            image 'hadolint/hadolint:latest-debian'
-	        }
-	    }
-	    steps {
-	    	sh 'echo "Linting..."'
+    	sh 'echo "Linting..."'
+    	docker.image('hadolint/hadolint:latest-debian').inside {
 	        sh 'hadolint Dockerfile'
-	        sh 'pylint --disable=R,C,W1203 app.py'
-	    }
+		}
+	    sh 'pylint --disable=R,C,W1203 app.py'
 	}
     stage('Build') {
 		sh 'echo "Building Docker Image..."'

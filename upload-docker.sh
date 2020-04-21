@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This file tags and uploads an image to Docker Hub
+# This file tags and uploads an image to ECR
 
 # Assumes that an image is built via `run_docker.sh`
 REPO=451004051173.dkr.ecr.us-east-1.amazonaws.com/udacity-capstone

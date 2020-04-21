@@ -1,6 +1,6 @@
 setup:
 	# Create python virtualenv & source it
-	# source ~/.devops/bin/activate
+	# source ~/.udacity-capstone/bin/activate
 	python3 -m venv ~/.udacity-capstone
 
 install:
@@ -12,8 +12,9 @@ test:
 
 lint:
 	# This is linter for Dockerfiles
-	hadolint Dockerfile
+	/bin/hadolint Dockerfile
 	# This should be run from inside a virtualenv
 	pylint --disable=R,C,W1203 app.py
+
 
 all: install lint test

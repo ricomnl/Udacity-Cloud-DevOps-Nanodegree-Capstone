@@ -1,7 +1,6 @@
 pipeline {
 	agent { 
 		docker { 
-			label 'dockerserver'
 			image 'python:3.7.3-stretch' 
 		} 
 	}

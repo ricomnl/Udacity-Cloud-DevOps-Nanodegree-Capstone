@@ -1,4 +1,6 @@
 node {
+	def REPO = '51004051173.dkr.ecr.us-east-1.amazonaws.com'
+	def IMAGE = 'udacity-capstone'
 	stage('Checking out Repository...') {
   	 	sh 'echo "Check out git repo..."'
      	checkout scm
@@ -13,16 +15,16 @@ node {
     } 
     stage ("Linting") {
     	sh 'echo "Linting..."'
-    	docker.image('hadolint/hadolint:latest-debian').inside {
-	        sh 'hadolint Dockerfile'
-		}
 	    sh 'pylint --disable=R,C,W1203 app.py'
 	}
     stage('Build') {
 		sh 'echo "Building Docker Image..."'
-		docker.build('udacity-capstone')
-		docker.withRegistry('51004051173.dkr.ecr.us-east-1.amazonaws.com/udacity-capstone', 'ecr:us-east-1:aws-capstone') {
-			docker.image('udacity-capstone').push('latest')
+		sh '''
+			docker build -t ${IMAGE} .
+			docker tag ${IMAGE}:latest ${REPO}:latest
+		'''
+		withAWS(region:'us-east-1',credentials:'aws-capstone') {
+			sh 'docker push ${REPO}:latest'
 		}
 	}    
 }

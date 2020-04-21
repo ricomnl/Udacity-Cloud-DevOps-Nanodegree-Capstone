@@ -12,7 +12,7 @@ test:
 
 lint:
 	# This is linter for Dockerfiles
-	/bin/hadolint Dockerfile
+	#/bin/hadolint Dockerfile
 	# This should be run from inside a virtualenv
 	pylint --disable=R,C,W1203 app.py
 

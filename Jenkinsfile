@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	environment {
-		REPO = "451004051173.dkr.ecr.us-east-1.amazonaws.com"
+		REPO = "https://451004051173.dkr.ecr.us-east-1.amazonaws.com"
 		IMAGE = "udacity-capstone"
 	}
 	stages {

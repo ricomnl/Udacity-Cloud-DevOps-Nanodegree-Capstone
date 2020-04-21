@@ -15,6 +15,7 @@ node {
     } 
     stage ("Linting") {
     	sh 'echo "Linting..."'
+    	sh 'source ~/.udacity-capstone/bin/activate'
 	    sh 'pylint --disable=R,C,W1203 app.py'
 	}
     stage('Build') {
@@ -28,3 +29,4 @@ node {
 		}
 	}    
 }
+

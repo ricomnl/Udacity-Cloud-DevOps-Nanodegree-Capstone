@@ -1,5 +1,10 @@
 pipeline {
-	agent { docker { image 'python:3.7.3-stretch' } }
+	agent { 
+		docker { 
+			label 'dockerserver'
+			image 'python:3.7.3-stretch' 
+		} 
+	}
 	stages {
 		stage('Checking out Repository...') {
               steps {

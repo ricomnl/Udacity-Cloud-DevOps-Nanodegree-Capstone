@@ -42,7 +42,6 @@ pipeline {
 	                sh 'kubectl apply -f "aws/app-deployment.yml"'
 	            	sh 'kubectl get nodes'
             		sh 'kubectl get pods'
-            		sh 'aws cloudformation update-stack --stack-name udacity-capstone-nodes --template-body file://aws/workernodes.yml --parameters file://aws/workernodes-params.json --capabilities CAPABILITY_IAM'
         		}
         	}
         }

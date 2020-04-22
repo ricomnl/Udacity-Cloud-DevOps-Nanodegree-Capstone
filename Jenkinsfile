@@ -22,7 +22,7 @@ pipeline {
                   sh 'hadolint Dockerfile'
               }
         } 
-         stage('Build') {
+        stage('Build') {
 			steps {
 				sh 'echo "Building Docker Image..."'
 				script {
@@ -31,6 +31,16 @@ pipeline {
 					}
 				}
 			}
-		}    
+		}
+		stage('Deploying') {
+      		steps {
+          		sh 'echo "Deploying to AWS..."'
+	            withAWS(credentials: 'aws-capstone', region: 'us-east-1') {
+	                sh "aws eks --region us-east-1 update-kubeconfig --name CapstoneEKS-Oln500r9NoXs"
+	                sh "kubectl apply -f aws/aws-auth-cm.yml"
+	                sh "kubectl apply -f aws/app-deployment.yml"
+	            }
+        	}
+        }
 	}
 }

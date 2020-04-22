@@ -1,0 +1,27 @@
+Description: >
+    Capstone project for Cloud DevOps Engineering Nanodegree
+Parameters:
+  EnvironmentName:
+    Description: Environment
+    Type: String
+Resources:
+  CapstoneEKS:
+    Type: AWS::EKS::Cluster
+    Properties:
+      Version: '1.15'
+      RoleArn: arn:aws:iam::451004051173:role/eks-cluster-role-eksClusterRole-D6L7SFYEB8MC
+      ResourcesVpcConfig:
+        SecurityGroupIds:
+        - Fn::ImportValue:
+            !Sub "${EnvironmentName}-SCG"
+        SubnetIds:
+            Fn::Split:
+                - ","
+                - Fn::ImportValue:
+                      Fn::Sub: ${EnvironmentName}-SBN-IDS
+Outputs:
+  EksId:
+    Description: EKS ID
+    Value: !Ref CapstoneEKS
+    Export: 
+        Name: !Sub ${EnvironmentName}-EKS

@@ -1,0 +1,1 @@
+aws cloudformation update-stack --stack-name udacity-capstone-nodes --template-body file://workernodes.yml --parameters file://workernodes-params.json --capabilities CAPABILITY_IAM

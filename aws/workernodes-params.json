@@ -1,0 +1,14 @@
+[
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "udacity-capstone-project"
+    },
+    {
+        "ParameterKey": "SshKey",
+        "ParameterValue": "aws-jenkins"
+    },
+    {
+        "ParameterKey":"DesiredInstances",
+        "ParameterValue": "3"
+    }
+]

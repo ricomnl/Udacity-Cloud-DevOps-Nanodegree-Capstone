@@ -1,0 +1,22 @@
+{
+   "kind": "Service",
+   "apiVersion": "v1",
+   "metadata": {
+      "name": "udacity-capstone",
+      "labels": {
+         "app": "udacity-capstone"
+      }
+   },
+   "spec": {
+      "ports": [
+         {
+           "port": 3000,
+           "targetPort": "http-server"
+         }
+      ],
+      "selector": {
+         "app": "udacity-capstone"
+      },
+      "type": "LoadBalancer"
+   }
+}

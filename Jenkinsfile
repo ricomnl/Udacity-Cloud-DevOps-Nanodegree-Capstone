@@ -40,6 +40,7 @@ pipeline {
 	                sh 'kubectl apply -f "aws/aws-auth-cm.yml"'
 	                sh 'kubectl set image deployments/udacity-capstone udacity-capstone="${REPO}/${IMAGE}:latest"'
 	                sh 'kubectl apply -f "aws/app-deployment.yml"'
+	                sh 'kubectl apply -f "aws/app-service.yml"'
 	            	sh 'kubectl get nodes'
             		sh 'kubectl get pods'
         		}

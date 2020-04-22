@@ -40,7 +40,10 @@ pipeline {
 	                sh 'kubectl apply -f "aws/aws-auth-cm.yml"'
 	                sh 'kubectl set image deployments/udacity-capstone udacity-capstone="${REPO}/${IMAGE}:latest"'
 	                sh 'kubectl apply -f "aws/app-deployment.yml"'
-	            }
+	            	sh 'kubectl get nodes'
+            		sh 'kubectl get pods'
+            		sh 'aws cloudformation update-stack --stack-name udacity-capstone-nodes --template-body file://workernodes.yml --parameters file://workernodes-params.json --capabilities CAPABILITY_IAM'
+        		}
         	}
         }
 	}

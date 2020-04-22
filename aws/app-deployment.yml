@@ -25,5 +25,5 @@ spec:
         imagePullPolicy: Always
         name: udacity-capstone
         ports:
-        - containerPort: 3000
+        - containerPort: 8000
           protocol: TCP

@@ -26,4 +26,3 @@ spec:
         name: udacity-capstone
         ports:
         - containerPort: 80
-          protocol: TCP

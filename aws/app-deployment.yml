@@ -21,7 +21,7 @@ spec:
         app: udacity-capstone
     spec:
       containers:
-      - image: https://451004051173.dkr.ecr.us-east-1.amazonaws.com/udacity-capstone:latest
+      - image: 451004051173.dkr.ecr.us-east-1.amazonaws.com/udacity-capstone:latest
         imagePullPolicy: Always
         name: udacity-capstone
         ports:

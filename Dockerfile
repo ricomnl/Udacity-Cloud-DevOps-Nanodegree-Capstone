@@ -1,4 +1,4 @@
-FROM python:3.7.3-stretch
+FORM python:3.7.3-stretch
 
 # Create a working directory
 WORKDIR /home

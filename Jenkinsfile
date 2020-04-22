@@ -36,9 +36,9 @@ pipeline {
       		steps {
           		sh 'echo "Deploying to AWS..."'
 	            withAWS(credentials: 'aws-capstone', region: 'us-east-1') {
-	                sh "/usr/local/bin/aws/aws eks --region us-east-1 update-kubeconfig --name CapstoneEKS-Oln500r9NoXs"
-	                sh "kubectl apply -f aws/aws-auth-cm.yml"
-	                sh "kubectl apply -f aws/app-deployment.yml"
+	                sh 'usr/local/bin/aws/aws eks --region us-east-1 update-kubeconfig --name CapstoneEKS-Oln500r9NoXs'
+	                sh 'kubectl apply -f "aws/aws-auth-cm.yml"'
+	                sh 'kubectl apply -f "aws/app-deployment.yml"'
 	            }
         	}
         }
